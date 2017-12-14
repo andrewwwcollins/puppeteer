@@ -1153,6 +1153,15 @@ describe('Page', function() {
       expect(requests.length).toBe(1);
       expect(requests[0].url).toBe(server.EMPTY_PAGE);
     });
+    it('should set fromServiceWorker to true when request is served from a service worker', async({page, server}) => {
+      await page._client.send('ServiceWorker.enable');
+      await page._client.send('ServiceWorker.setForceUpdateOnPageLoad', { forceUpdateOnPageLoad: true });
+
+      await page.goto(server.PREFIX + '/service-worker.html');
+      const response = await page.reload();
+
+      expect(response.fromServiceWorker).toBe(true);
+    });
   });
 
   describe('Page.waitForNavigation', function() {
