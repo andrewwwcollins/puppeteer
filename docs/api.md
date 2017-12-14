@@ -182,6 +182,8 @@
   * [request.url](#requesturl)
 - [class: Response](#class-response)
   * [response.buffer()](#responsebuffer)
+  * [response.fromDiskCache](#responsefromdiskcache)
+  * [response.fromServiceWorker](#responsefromserviceworker)
   * [response.headers](#responseheaders)
   * [response.json()](#responsejson)
   * [response.ok](#responseok)
@@ -2064,6 +2066,16 @@ Contains the URL of the request.
 
 #### response.buffer()
 - returns: <Promise<[Buffer]>> Promise which resolves to a buffer with response body.
+
+#### response.fromDiskCache
+- <[string]>
+
+Specifies that the request was served from the disk cache.
+
+#### response.fromServiceWorker
+- <[string]>
+
+Specifies that the request was served from the ServiceWorker.
 
 #### response.headers
 - <[Object]> An object with HTTP headers associated with the response. All header names are lower-case.
